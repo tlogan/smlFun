@@ -86,7 +86,7 @@ fun balanced t = case t of
 
 
 structure Q = Queue
-fun dfs f t = let
+fun bfs f t = let
   val q = Q.mkQueue ()
   val _ = Q.enqueue (q, (t, 1))
 
@@ -127,7 +127,7 @@ fun add_breaks l = case l of
 
 fun test l = let
   val t = insert_many (E, l)
-  val tp_list = dfs (fn tp => tp) t
+  val tp_list = bfs (fn tp => tp) t
   val _ = List.app print (add_breaks tp_list) 
 in
   balanced t
